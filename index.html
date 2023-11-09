@@ -16,11 +16,9 @@
     <body>
         <div id="header">
             <h1>inTouch <span>&#9992</span></h1>
-            <button>&#10010</button>
+            <button onclick="document.getElementById('selectedFile').click();">&#10010</button>
+            <input type="file" id="selectedFile" name="myImage" accept="image/*" style="display: none"/>
         </div>
-        
-        <input type="file" id="selectedFile" name="myImage" accept="image/*" style="display: none"/>
-        <input type="button" value="Upload" onclick="document.getElementById('selectedFile').click();" />
 
         <script src="index.js" type="module"></script>
     </body>
