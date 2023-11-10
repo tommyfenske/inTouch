@@ -1,7 +1,6 @@
 <!doctype html>
 <html>
     <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
         <title>Social Media</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="index.css">
@@ -9,15 +8,17 @@
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
         <link rel="manifest" href="/site.webmanifest">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     </head>
 
     <body>
         <div id="header">
             <h1>inTouch <span>&#9992</span></h1>
-            <button onclick="document.getElementById('selectedFile').click();">&#10010</button>
-            <input type="file" id="selectedFile" name="myImage" accept="image/*" style="display: none"/>
+            <button onclick="document.getElementById('file-upload').click();">&#10010</button>
+            <input type="file" id="file-upload" name="myImage" accept="image/*" style="display: none"/>
+        </div>
+
+        <div id="feed">
+            <p>Photos show up here</p>
         </div>
 
         <script src="index.js" type="module"></script>
