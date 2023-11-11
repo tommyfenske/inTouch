@@ -46,13 +46,14 @@ function updateFeed() {
                 let newImg = document.createElement("img")
                 feedElement.appendChild(newImg)
                 newImg.src = url
+                
             })
         })
     })
 }
 
 function createPost () {
-    
+
 }
 
 updateFeed()
