@@ -34,9 +34,12 @@ fileUpload.addEventListener("change", function() {
     })   
 
     inputFile = ""
+    updateFeed()
 })
 
 function updateFeed() {
+    feedElement.innerHTML = ""
+
     listAll(photosRef).then((response) => {
         response.items.forEach((item) => {
             getDownloadURL(item).then((url) => {
@@ -46,6 +49,10 @@ function updateFeed() {
             })
         })
     })
+}
+
+function createPost () {
+    
 }
 
 updateFeed()
