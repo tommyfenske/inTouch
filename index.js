@@ -1,16 +1,17 @@
 //Firebase Import and Config
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-//import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
-import { getStorage, ref, uploadBytes } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js";
+//import { getDatabase, push, onValue } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js";
+import { getStorage, ref, uploadBytes, getDownloadURL, listAll } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-storage.js";
 
 const firebaseConfig = {
     //databaseURL: "https://intouch-60715-default-rtdb.firebaseio.com",
     storageBucket: "intouch-60715.appspot.com"
 };
 const app = initializeApp(firebaseConfig);
+//const myDB = getDatabase(app);
+//const namesInDB = ref(myDB, "names")
 const storage = getStorage();
-const storageRef = ref(storage);
-const photosRef = ref(storage, "photos/test")
+const photosRef = ref(storage, "photos/")
 
 //Get HTML Elements
 const fileUpload = document.getElementById("file-upload")
@@ -22,14 +23,32 @@ const testImg = document.getElementById("test-img")
 fileUpload.addEventListener("change", function() {
     let inputFile = fileUpload.files[0]
     let fileName = fileUpload.files[0].name
-    var newRef = ref(storage, `photos/${fileUpload.files[0].name}`)
-    uploadBytes(newRef, inputFile).then((snapshot) => {
+    var uploadRef = ref(storage, `photos/${fileName}`)
+    uploadBytes(uploadRef, inputFile).then((snapshot) => {
         testP.innerText = fileName
-    })
- 
+        
+        getDownloadURL(uploadRef).then((url) => {
+            testImg.src = url
+            //testP.innerText = url
+        })
+    })   
+
     inputFile = ""
 })
 
+function updateFeed() {
+    listAll(photosRef).then((response) => {
+        response.items.forEach((item) => {
+            getDownloadURL(item).then((url) => {
+                let newImg = document.createElement("img")
+                feedElement.appendChild(newImg)
+                newImg.src = url
+            })
+        })
+    })
+}
+
+updateFeed()
 //Update Feed of Pictures
 /*
 function updateFeed(arr) {

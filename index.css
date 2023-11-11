@@ -2,7 +2,13 @@ body {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background: #2e2e2e;
     color: #faf9f6;
+    text-align: center;
 }
+
+img {
+    width: 300px;
+}
+
 button {
     background: #404040;
     border: none;
@@ -19,6 +25,3 @@ button {
     padding: 5px 20px;
 }
 
-#feed {
-    text-align: center;
-}
